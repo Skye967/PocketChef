@@ -24,7 +24,7 @@ export default function Home() {
            model: "gpt-3.5-turbo", // or the version you want to use
            messages: [
              { role: "system", content: "You are a helpful assistant." },
-             { role: "user", content: `Return 5 recipes in JSON format using only ${ingredientList}`  },
+             { role: "user", content: `Return 5 recipes in JSON format with the properties title, ingredients, and instructions using only ${ingredientList}`  },
            ],
          });
          const List = RecipeListDeconstructor(result.data.choices[0].message.content);
