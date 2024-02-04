@@ -1,54 +1,43 @@
 "use client";
 
 import Ingredient from "./components/Ingredient";
-import RecipeList from "./components/RecipeList";
+// import RecipeList from "./components/RecipeList";
+import React, { useState } from "react";
+import api from "./api/api";
+import { RecipeListDeconstructor } from "./util/chatGPTParser";
+import { RecipeList } from "./components/RecipeList";
+
 
 type Recipe = {
-  id: number;
-  name: string;
+  title: string;
   ingredients: string[];
   instructions: string;
 };
 
-const recipes: Recipe[] = [
-  {
-    id: 1,
-    name: "Chicken Stir Fry",
-    ingredients: ["Chicken", "Vegetables", "Soy Sauce"],
-    instructions: "...",
-  },
-  {
-    id: 2,
-    name: "Spaghetti Bolognese",
-    ingredients: ["Ground Beef", "Tomato Sauce", "Pasta"],
-    instructions: "...",
-  },
-  {
-    id: 3,
-    name: "Vegetarian Pizza",
-    ingredients: ["Dough", "Tomatoes", "Cheese", "Bell Peppers"],
-    instructions: "...",
-  },
-  {
-    id: 4,
-    name: "Salmon with Lemon Dill Sauce",
-    ingredients: ["Salmon", "Lemon", "Dill", "Olive Oil"],
-    instructions: "...",
-  },
-  {
-    id: 5,
-    name: "Chocolate Chip Cookies",
-    ingredients: ["Flour", "Butter", "Sugar", "Chocolate Chips"],
-    instructions: "...",
-  },
-];
-
 export default function Home() {
-  console.log(process.env.NEXT_PUBLIC_OPENAI_API_KEY);
-  console.log(process.env.OPENAI_API_KEY)
+  const [recipeList, setRecipeList] = useState<Recipe[] | null>(null)
 
-  const handleDummySubmit = () => {
-    //some api stuff
+  
+  const fetchData = async (ingredientList: String) => {
+       try {
+         const result = await api.post("/chat/completions", {
+           model: "gpt-3.5-turbo", // or the version you want to use
+           messages: [
+             { role: "system", content: "You are a helpful assistant." },
+             { role: "user", content: `Return 5 recipes in JSON format using only ${ingredientList}`  },
+           ],
+         });
+         const List = RecipeListDeconstructor(result.data.choices[0].message.content);
+         setRecipeList(List.recipes)
+          console.log(result)
+       } catch (error) {
+         console.error("Error fetching data:", error);
+       }
+     };
+
+  const handleDummySubmit = (ingredientList: String) => {
+      console.log(ingredientList);
+      fetchData(ingredientList); 
   };
 
   return (
@@ -59,7 +48,7 @@ export default function Home() {
         </h1>
       </div>
       <Ingredient onSubmit={handleDummySubmit} />
-      <RecipeList recipes={recipes} />
+      <RecipeList recipes={recipeList} />
     </main>
   );
-}
+};
