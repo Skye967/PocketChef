@@ -11,7 +11,10 @@ const Ingredient: React.FC<FoodInputComponentProps> = ({ onSubmit }) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    onSubmit(ingredients);
+    if (ingredients) {
+      onSubmit(ingredients);
+    }
+    setIngredients("");
     // You can add further logic here, e.g., clearing the input field.
   };
 
