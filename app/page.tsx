@@ -34,7 +34,6 @@ export default function Home() {
           },
         ],
       });
-      console.log(result)
 
       const List = RecipeListDeconstructor(
         result.data.choices[0].message.content
@@ -50,7 +49,6 @@ export default function Home() {
   };
 
   const handleDummySubmit = (ingredientList: String) => {
-    console.log(ingredientList);
     fetchData(ingredientList);
   };
 
