@@ -6,7 +6,7 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PocketCHef",
+  title: "PocketChef",
   description: "Solving the age old problem of making something to eat out of the ingredients you have. Just enter what ingredients you have or want to use and let PocketChef give you some recipes and inspiration",
 };
 
