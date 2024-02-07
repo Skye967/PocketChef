@@ -48,10 +48,9 @@ export default function Home() {
     }
     setIsLoading(false);
   };
-
+  
   const handleDummySubmit = (ingredientList: String, mealType: string, numberOfRecipes: string, dietType: string) => {
     fetchData(ingredientList, mealType, numberOfRecipes, dietType);
-  };
 
   return (
     <main>
