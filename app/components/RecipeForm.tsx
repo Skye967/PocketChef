@@ -1,37 +1,29 @@
 "use client";
 
 import React, { useState, FormEvent } from "react";
+import { mealCategories, dietCategories } from "../util/constants";
 
-const mealCategories = [
-  "Breakfast",
-  "Lunch",
-  "Dinner",
-  "Dessert",
-  "Salad",
-  "Sandwich",
-  "Soup",
-  "Appetizer",
-  "Flatbread",
-  "Pasta"
-];
+
 
 type FoodInputComponentProps = {
-  onSubmit: (ingredients: string, mealType: string, numberOfRecipes: string) => void;
+  onSubmit: (ingredients: string, mealType: string, numberOfRecipes: string, dietType: string) => void;
 };
 
 const RecipeForm: React.FC<FoodInputComponentProps> = ({ onSubmit }) => {
   const [ingredients, setIngredients] = useState("");
   const [mealType, setMealType] = useState("");
   const [numberOfRecipes, setNumberOfRecipes] = useState("")
+  const [dietType, setDietType] = useState("")
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (ingredients) {
-      onSubmit(ingredients, mealType, numberOfRecipes);
+      onSubmit(ingredients, mealType, numberOfRecipes, dietType);
     }
     setNumberOfRecipes("")
     setMealType("");
     setIngredients("");
+    setDietType("")
     // You can add further logic here, e.g., clearing the input field.
   };
 
@@ -98,6 +90,29 @@ const RecipeForm: React.FC<FoodInputComponentProps> = ({ onSubmit }) => {
           <option value="10">10</option>
           <option value="15">15</option>
           <option value="20">20</option>
+        </select>
+
+        <div className="border m-5"></div>
+
+        <label
+          htmlFor="dietType"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Select a Diet:
+        </label>
+        <select
+          id="DietType"
+          name="DietType"
+          value={dietType}
+          onChange={(e) => setDietType(e.target.value)}
+          className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+        >
+          <option value="">Choose a category</option>
+          {dietCategories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
         </select>
 
         <div className="border m-5"></div>
