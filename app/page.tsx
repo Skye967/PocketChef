@@ -31,7 +31,7 @@ export default function Home() {
           { role: "system", content: "You are a helpful assistant." },
           {
             role: "user",
-            content: `In JSON format return ${numberOfRecipes} ${dietType} ${mealType} recipes with ${ingredientList}. With the properties title, ingredients, and instructions using only these ingredients `,
+            content: `Create ${numberOfRecipes} ${dietType} ${mealType} recipes with ${ingredientList}. With the properties title, ingredients, and instructions. Return results in JSON format.`,
           },
         ],
       });

@@ -24,6 +24,7 @@ const RecipeForm: React.FC<FoodInputComponentProps> = ({ onSubmit }) => {
     setMealType("");
     setIngredients("");
     setDietType("")
+    console.log(ingredients, mealType, numberOfRecipes, dietType);
     // You can add further logic here, e.g., clearing the input field.
   };
 
