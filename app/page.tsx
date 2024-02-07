@@ -55,7 +55,7 @@ export default function Home() {
 
   return (
     <main>
-      <div className="flex justify-between bg-gradient-to-r from-green-500 via-pink-500 to-green-500 text-white py-8 p-8">
+      <div className="flex justify-between bg-gradient-to-r from-emerald-300 via-emerald-800 to-emerald-300 text-white p-6 shadow-black shadow-sm">
         <div className="w-1/3">
           <Image
             src={logo}
@@ -64,7 +64,7 @@ export default function Home() {
           />
         </div>
         <div className="flex justify-center place-items-center w-1/3">
-          <h1 className="text-4xl font-bold text-center ">PocketChef</h1>
+          <h1 className="text-3xl font-bold text-center ">PocketChef</h1>
         </div>
         <div className="w-1/3"></div>
       </div>
