@@ -2,18 +2,14 @@
 
 import React from "react";
 import RecipeCard from "./RecipeCard";
-
-type Recipe = {
-  title: string;
-  ingredients: string[];
-  instructions: string;
-};
+import { Recipe } from "../util/constants";
 
 type RecipeListComponentProps = {
   recipes: Recipe[] | null;
 };
 
 export const RecipeList: React.FC<RecipeListComponentProps> = ({ recipes }) => {
+
   return (
      <div className="max-w-md mx-auto mt-8 p-4 bg-white rounded shadow-md">
        <h2 className="text-2xl font-bold mb-4">Recipe List</h2>

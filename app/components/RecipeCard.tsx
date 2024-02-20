@@ -6,7 +6,7 @@ import RecipeModal from "./RecipeModal";
 type RecipeCardProps = {
   title: string;
   ingredients: string[];
-  instructions: string;
+  instructions: string[];
 };
 
 const RecipeCard: React.FC<RecipeCardProps> = ({
@@ -15,7 +15,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({
   instructions,
 }) => {
   return (
-    <div className="max-w-md mx-auto mt-8 p-4 bg-white rounded shadow-md">
+    <div className="relative max-w-md mx-auto mt-8 p-4 bg-white rounded shadow-md">
       <h2 className="text-2xl font-bold mb-2">{title}</h2>
 
       <RecipeModal

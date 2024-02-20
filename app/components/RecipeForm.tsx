@@ -22,7 +22,6 @@ const RecipeForm: React.FC<FoodInputComponentProps> = ({ onSubmit }) => {
     }
     setNumberOfRecipes("")
     setMealType("");
-    setIngredients("");
     setDietType("")
     console.log(ingredients, mealType, numberOfRecipes, dietType);
     // You can add further logic here, e.g., clearing the input field.
@@ -53,7 +52,7 @@ const RecipeForm: React.FC<FoodInputComponentProps> = ({ onSubmit }) => {
           htmlFor="mealCategory"
           className="block text-gray-700 text-sm font-bold mb-2"
         >
-          Select a Meal Category:
+          Select a Meal Category(Optional):
         </label>
         <select
           id="mealCategory"
@@ -86,7 +85,6 @@ const RecipeForm: React.FC<FoodInputComponentProps> = ({ onSubmit }) => {
           onChange={(e) => setNumberOfRecipes(e.target.value)}
           className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
         >
-          <option value="">Choose a number</option>
           <option value="5">5</option>
           <option value="10">10</option>
           <option value="15">15</option>
@@ -99,7 +97,7 @@ const RecipeForm: React.FC<FoodInputComponentProps> = ({ onSubmit }) => {
           htmlFor="dietType"
           className="block text-gray-700 text-sm font-bold mb-2"
         >
-          Select a Diet:
+          Select a Diet(Optional):
         </label>
         <select
           id="DietType"
