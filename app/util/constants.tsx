@@ -1,3 +1,10 @@
+
+export type Recipe = {
+  title: string;
+  ingredients: string[];
+  instructions: string[];
+};
+
 export const mealCategories = [
   "Breakfast",
   "Lunch",
@@ -25,3 +32,5 @@ export const dietCategories = [
   "Anti-inflammatory",
   "Atkins",
 ];
+
+export const test = ""

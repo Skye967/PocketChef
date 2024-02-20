@@ -6,7 +6,7 @@ import RecipeModal from "./RecipeModal";
 type RecipeCardProps = {
   title: string;
   ingredients: string[];
-  instructions: string;
+  instructions: string[];
 };
 
 const RecipeCard: React.FC<RecipeCardProps> = ({

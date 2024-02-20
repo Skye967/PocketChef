@@ -1,56 +1,45 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import api from "./api/api";
-import { RecipeListDeconstructor } from "./util/chatGPTParser";
+import React, { useState } from "react";
 import { RecipeList } from "./components/RecipeList";
 import Loading from "./components/Loading";
 import ErrorMessage from "./components/ErrorMessage";
 import RecipeForm from "./components/RecipeForm";
 import Image from "next/image";
-import logo from "../public/littleChefLogo.png"
-
-type Recipe = {
-  title: string;
-  ingredients: string[];
-  instructions: string;
-};
+import logo from "../public/littleChefLogo.png";
+import { Recipe } from "./util/constants";
+import { RecipeListConstructor } from "./util/chatGPTParser";
 
 export default function Home() {
   const [recipeList, setRecipeList] = useState<Recipe[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [testList, setTestList] = useState<any>(null);
+  let count = 0;
 
-  const fetchData = async (ingredientList: String, mealType: string, numberOfRecipes: string, dietType: string) => {
+  const HandleSubmit = async (
+    ingredientList: String,
+    mealType: string,
+    numberOfRecipes: string,
+    dietType: string
+  ) => {
     setError(null);
     setIsLoading(true);
+
     try {
-      const result = await api.post("/chat/completions", {
-        model: "gpt-3.5-turbo", // or the version you want to use
-        messages: [
-          { role: "system", content: "You are a helpful assistant." },
-          {
-            role: "user",
-            content: `Create ${numberOfRecipes} ${dietType} ${mealType} recipes with ${ingredientList}. With the properties title, ingredients, and instructions. Return results in JSON format.`,
-          },
-        ],
-      });
-
-      const List = RecipeListDeconstructor(
-        result.data.choices[0].message.content
+      const list: Promise<Recipe[] | null> = RecipeListConstructor(
+        ingredientList,
+        mealType,
+        numberOfRecipes,
+        dietType
       );
-      setRecipeList(List.recipes);
-      setIsLoading(false);
+      setRecipeList(await list);
     } catch (error) {
-      console.error("Error fetching data:", error);
-      setError("Something went wrong, please try again");
-      setIsLoading(false);
+      console.log("Something went wrong!", error);
+      setError("Something went wrong, please try again!");
     }
-    setIsLoading(false);
-  };
 
-  const handleDummySubmit = (ingredientList: String, mealType: string, numberOfRecipes: string, dietType: string) => {
-    fetchData(ingredientList, mealType, numberOfRecipes, dietType);
+    setIsLoading(false);
   };
 
   return (
@@ -68,7 +57,7 @@ export default function Home() {
         </div>
         <div className="w-1/3"></div>
       </div>
-      <RecipeForm onSubmit={handleDummySubmit} />
+      <RecipeForm onSubmit={HandleSubmit} />
       {!isLoading && error && <ErrorMessage message={error} />}
       {!isLoading && RecipeList ? (
         <RecipeList recipes={recipeList} />

@@ -5,7 +5,7 @@ import React, { useState } from "react";
 type RecipeModalProps = {
   title: string;
   ingredients: string[];
-  instructions: string;
+  instructions: string[];
 };
 
 const RecipeModal: React.FC<RecipeModalProps> = ({
@@ -29,9 +29,8 @@ const RecipeModal: React.FC<RecipeModalProps> = ({
       </button>
 
       {isOpen && (
-        <div className="fixed pt-40 inset-2 z-50 flex items-center justify-center overflow-auto shadow-lg container">
-
-          <div className="bg-white p-8 max-w-md rounded-md z-10">
+        <div className="fixed pt-40 inset-2 z-50 flex items-center justify-center overflow-auto">
+          <div className="bg-white p-8 max-w-md rounded-md z-10 border shadow-lg">
             <h2 className="text-2xl font-bold mb-4">{title}</h2>
 
             <div className="mb-4">
@@ -47,7 +46,13 @@ const RecipeModal: React.FC<RecipeModalProps> = ({
 
             <div>
               <h3 className="text-xl font-bold mb-2">Instructions:</h3>
-              <p className="text-gray-700">{instructions}</p>
+              <ol className="list-disc pl-6">
+                {instructions.map((instruction, index) => (
+                  <p key={index} className="text-gray-700">
+                    {index+1}.  {instruction}
+                  </p>
+                ))}
+              </ol>
             </div>
 
             <button
