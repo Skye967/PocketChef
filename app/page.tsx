@@ -26,6 +26,8 @@ export default function Home() {
     setError(null);
     setIsLoading(true);
 
+    console.log(ingredientList, mealType, numberOfRecipes, dietType)
+
     try {
       const list: Promise<Recipe[] | null> = RecipeListConstructor(
         ingredientList,

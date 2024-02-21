@@ -12,7 +12,7 @@ type FoodInputComponentProps = {
 const RecipeForm: React.FC<FoodInputComponentProps> = ({ onSubmit }) => {
   const [ingredients, setIngredients] = useState("");
   const [mealType, setMealType] = useState("");
-  const [numberOfRecipes, setNumberOfRecipes] = useState("")
+  const [numberOfRecipes, setNumberOfRecipes] = useState("5")
   const [dietType, setDietType] = useState("")
 
   const handleSubmit = (e: FormEvent) => {
@@ -20,11 +20,8 @@ const RecipeForm: React.FC<FoodInputComponentProps> = ({ onSubmit }) => {
     if (ingredients) {
       onSubmit(ingredients, mealType, numberOfRecipes, dietType);
     }
-    setNumberOfRecipes("")
     setMealType("");
     setDietType("")
-    console.log(ingredients, mealType, numberOfRecipes, dietType);
-    // You can add further logic here, e.g., clearing the input field.
   };
 
   return (
