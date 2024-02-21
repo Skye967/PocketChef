@@ -29,7 +29,7 @@ const RecipeModal: React.FC<RecipeModalProps> = ({
       </button>
 
       {isOpen && (
-        <div className="fixed border inset-2 z-50  flex align-middle items-center justify-center">
+        <div className="fixed inset-2 z-50  flex align-middle items-center justify-center">
           <div className="bg-white p-8 rounded-md z-10 max-h-screen max-w-screen overflow-auto border shadow-lg">
             <h2 className="text-2xl font-bold mb-4">{title}</h2>
 
