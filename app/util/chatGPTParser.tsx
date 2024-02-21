@@ -7,6 +7,7 @@ export const RecipeListConstructor = async (
   numberOfRecipes: string,
   dietType: string
 ): Promise<Recipe[] | null> => {
+
   try {
     const result = await api.post("/chat/completions", {
       model: "gpt-3.5-turbo", // or the version you want to use
@@ -33,7 +34,7 @@ export const RecipeListConstructor = async (
       List = JSON.parse(List);
     }
     
-    const keyFor = Object.keys(List)[0];
+      const keyFor = Object.keys(List)[0];
       
     return List[keyFor];
   } catch (error) {
