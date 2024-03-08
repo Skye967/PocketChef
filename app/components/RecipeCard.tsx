@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import RecipeModal from './RecipeModal';
+import { Recipe } from '../util/constants';
 
 type RecipeCardProps = {
   title: string;
@@ -10,7 +11,7 @@ type RecipeCardProps = {
   imageUrl: string;
 };
 
-const RecipeCard: React.FC<RecipeCardProps> = ({
+const RecipeCard: React.FC<Recipe> = ({
   title,
   ingredients,
   instructions,
@@ -20,11 +21,12 @@ const RecipeCard: React.FC<RecipeCardProps> = ({
   return (
     <div className='relative mx-auto mt-8 max-w-md rounded bg-white p-4 shadow-md'>
       <h2 className='mb-2 text-2xl font-bold'>{title}</h2>
-      {imageUrl && <img src={imageUrl} alt={title} />}
+      {imageUrl && <img src={imageUrl} alt={title ? title : 'image'} />}
       <RecipeModal
         title={title}
         ingredients={ingredients}
         instructions={instructions}
+        imageUrl={imageUrl}
       />
     </div>
   );

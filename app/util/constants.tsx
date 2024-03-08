@@ -1,8 +1,8 @@
 export type Recipe = {
-  title: string;
-  imageUrl: string;
-  ingredients: string[];
-  instructions: string[];
+  title: string | null;
+  imageUrl: string | null;
+  ingredients: string[] | null;
+  instructions: string[] | null;
 };
 
 export const mealCategories = [

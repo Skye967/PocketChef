@@ -56,26 +56,27 @@ export default function Home() {
   };
 
   useEffect(() => {
+    
     const image = async () => {
-      if (recipeList) {
+      if (recipeList !== null) {
         for (let i = 0; i < recipeList.length; i++) {
           setTimeout(async () => {
             if (!recipeList[i].imageUrl) {
-              const imageUrl: string = await imageGenerator(recipeList[i].title)
+              const imageUrl: string = await imageGenerator(recipeList[i].title!)
               if (typeof (imageUrl) === 'string') {
                 const nextRecipeList = recipeList
                 nextRecipeList[i].imageUrl = imageUrl
                 setRecipeList([...nextRecipeList])
               }
             }
-          }, 15000 * (i + 1));
+          }, 20000 * (i + 1));
         }
       }
     }
     if (recipeList) {
       image()
     }
-  },[])
+  })
 
   return (
     <main>

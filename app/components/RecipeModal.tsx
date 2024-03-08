@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { Recipe } from '../util/constants';
 
 type RecipeModalProps = {
   title: string;
@@ -8,7 +9,7 @@ type RecipeModalProps = {
   instructions: string[];
 };
 
-const RecipeModal: React.FC<RecipeModalProps> = ({
+const RecipeModal: React.FC<Recipe> = ({
   title,
   ingredients,
   instructions,
@@ -36,7 +37,7 @@ const RecipeModal: React.FC<RecipeModalProps> = ({
             <div className='mb-4'>
               <h3 className='mb-2 text-xl font-bold'>Ingredients:</h3>
               <ul className='list-disc pl-6'>
-                {ingredients.map((ingredient, index) => (
+                {ingredients!.map((ingredient, index) => (
                   <li key={index} className='text-gray-700'>
                     {ingredient}
                   </li>
@@ -47,7 +48,7 @@ const RecipeModal: React.FC<RecipeModalProps> = ({
             <div>
               <h3 className='mb-2 text-xl font-bold'>Instructions:</h3>
               <ol className='list-disc pl-6'>
-                {instructions.map((instruction, index) => (
+                {instructions!.map((instruction, index) => (
                   <p key={index} className='text-gray-700'>
                     {index + 1}. {instruction}
                   </p>
