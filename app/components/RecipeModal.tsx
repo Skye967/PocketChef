@@ -29,9 +29,9 @@ const RecipeModal: React.FC<RecipeModalProps> = ({
       </button>
 
       {isOpen && (
-        <div className='fixed inset-2 z-50 flex  items-center justify-center border align-middle'>
-          <div className='max-w-screen z-10 max-h-screen overflow-auto rounded-md border bg-white p-8 shadow-lg'>
-            <h2 className='mb-4 text-2xl font-bold'>{title}</h2>
+        <div className="fixed border inset-2 z-50  flex align-middle items-center justify-center">
+          <div className="bg-white p-8 rounded-md z-10 max-h-screen max-w-screen overflow-auto border shadow-lg">
+            <h2 className="text-2xl font-bold mb-4">{title}</h2>
 
             <div className='mb-4'>
               <h3 className='mb-2 text-xl font-bold'>Ingredients:</h3>
