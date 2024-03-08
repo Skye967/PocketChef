@@ -1,23 +1,27 @@
-"use client"
+'use client';
 
-import React from "react";
-import RecipeModal from "./RecipeModal";
+import React, { useState } from 'react';
+import RecipeModal from './RecipeModal';
+import Image from 'next/image';
 
 type RecipeCardProps = {
   title: string;
   ingredients: string[];
   instructions: string[];
+  imageUrl: string;
 };
 
 const RecipeCard: React.FC<RecipeCardProps> = ({
   title,
   ingredients,
   instructions,
+  imageUrl,
 }) => {
-  return (
-    <div className="relative max-w-md mx-auto mt-8 p-4 bg-white rounded shadow-md">
-      <h2 className="text-2xl font-bold mb-2">{title}</h2>
 
+  return (
+    <div className='relative mx-auto mt-8 max-w-md rounded bg-white p-4 shadow-md'>
+      <h2 className='mb-2 text-2xl font-bold'>{title}</h2>
+      {imageUrl && <img src={imageUrl} alt={title} />}
       <RecipeModal
         title={title}
         ingredients={ingredients}
