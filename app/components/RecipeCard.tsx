@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import RecipeModal from './RecipeModal';
-import Image from 'next/image';
 
 type RecipeCardProps = {
   title: string;
