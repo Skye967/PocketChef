@@ -59,11 +59,17 @@ export default function Home() {
         for (let i = 0; i < recipeList.length; i++) {
           setTimeout(async () => {
             if (!recipeList[i].imageUrl) {
-              const imageUrl: string = await imageGenerator(recipeList[i].title!)
-              if (typeof (imageUrl) === 'string') {
-                const nextRecipeList = recipeList
-                nextRecipeList[i].imageUrl = imageUrl
-                setRecipeList([...nextRecipeList])
+              try {
+                const imageUrl: string = await imageGenerator(recipeList[i].title!)
+                console.log(imageUrl)
+                if (typeof (imageUrl) === 'string') {
+                  const nextRecipeList = recipeList
+                  nextRecipeList[i].imageUrl = imageUrl
+                  setRecipeList([...nextRecipeList])
+                }
+              } catch (error) {
+                console.error(error)
+                return
               }
             }
           }, 20000 * (i + 1));

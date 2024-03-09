@@ -23,7 +23,7 @@ export async function POST(
         const body = await req.json();
 
         if (!body) {
-            return new Response("Error: promt is required", { status: 400 })
+            return new Response("Error: prompt is required", { status: 400 })
         }
 
         const response = await openai.images.generate({
