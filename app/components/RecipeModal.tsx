@@ -3,12 +3,6 @@
 import React, { useState } from 'react';
 import { Recipe } from '../util/constants';
 
-type RecipeModalProps = {
-  title: string;
-  ingredients: string[];
-  instructions: string[];
-};
-
 const RecipeModal: React.FC<Recipe> = ({
   title,
   ingredients,
@@ -23,7 +17,7 @@ const RecipeModal: React.FC<Recipe> = ({
   return (
     <div>
       <button
-        className='rounded bg-blue-500 px-4 py-2 text-white focus:border-blue-300 focus:outline-none focus:ring'
+        className='rounded bg-blue-500 px-4 py-2 m-5 text-white focus:border-blue-300 focus:outline-none focus:ring'
         onClick={toggleModal}
       >
         View Recipe

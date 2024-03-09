@@ -26,11 +26,8 @@ export default function Home() {
       body: JSON.stringify({ prompt: prompt })
     })
     const image = response.json()
-    console.log(image)
     return image
   }
-
-
 
   const HandleSubmit = async (
     ingredientList: String,
