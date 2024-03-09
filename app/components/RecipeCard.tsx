@@ -19,7 +19,7 @@ const RecipeCard: React.FC<Recipe> = ({
 
       {!imageUrl
         ?
-        <div className="animate-pulse rounded min-h-[300px] min-w-[300px] bg-gray-300">
+        <div className="animate-pulse rounded min-h-[300px] min-w-[300px] bg-gray-500">
           <img className="animate-pulse m-5 rounded min-h-[200px] min-w-[200px] bg-white" src={''} alt={''} />
           <div className="animate-pulse m-5 rounded min-h-[10px] min-w-[10px] bg-white"></div>
           <div className="animate-pulse m-5 rounded min-h-[10px] min-w-[10px] bg-white"></div>
@@ -28,7 +28,7 @@ const RecipeCard: React.FC<Recipe> = ({
         :
         <div className='rounded bg-cover bg-center'>
           <AsyncImage
-            className='block rounded object-center object-cover'
+            className='block rounded object-center object-cover shadow-black shadow-lg'
             src={imageUrl}
             style={{ width: 300, height: 300 }}
             loader={<div style={{ background: '#888' }} />}
