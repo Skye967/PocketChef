@@ -1,8 +1,8 @@
-"use client"
+'use client';
 
-import React from "react";
-import RecipeCard from "./RecipeCard";
-import { Recipe } from "../util/constants";
+import React, { useState } from 'react';
+import RecipeCard from './RecipeCard';
+import { Recipe } from '../util/constants';
 
 type RecipeListComponentProps = {
   recipes: Recipe[] | null;
@@ -11,21 +11,22 @@ type RecipeListComponentProps = {
 export const RecipeList: React.FC<RecipeListComponentProps> = ({ recipes }) => {
 
   return (
-     <div className="max-w-md mx-auto mt-8 p-4 bg-white rounded shadow-md">
-       <h2 className="text-2xl font-bold mb-4">Recipe List</h2>
-       <div>
-         {recipes ? (
+    <div className='mx-auto mt-8 max-w-md rounded bg-white p-4 shadow-md'>
+      <h2 className='mb-4 text-2xl font-bold'>Recipe List</h2>
+      <div>
+        {recipes ? (
           <ul>
-            {recipes.map((recipe, i) => (
-              <li key={i} className="mb-4">
+            {recipes.map((recipe, i) => {
+              return(
+              <li key={i} className='mb-4'>
                 <RecipeCard {...recipe} />
               </li>
-            ))}
+            )})}
           </ul>
         ) : (
-          <p className="text-gray-700">No recipes available.</p>
+          <p className='text-gray-700'>No recipes available.</p>
         )}
       </div>
-     </div>
-  )
+    </div>
+  );
 };

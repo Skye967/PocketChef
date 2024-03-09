@@ -1,14 +1,9 @@
-"use client"
+'use client';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { Recipe } from '../util/constants';
 
-type RecipeModalProps = {
-  title: string;
-  ingredients: string[];
-  instructions: string[];
-};
-
-const RecipeModal: React.FC<RecipeModalProps> = ({
+const RecipeModal: React.FC<Recipe> = ({
   title,
   ingredients,
   instructions,
@@ -22,22 +17,22 @@ const RecipeModal: React.FC<RecipeModalProps> = ({
   return (
     <div>
       <button
-        className="bg-blue-500 text-white py-2 px-4 rounded focus:outline-none focus:ring focus:border-blue-300"
+        className='rounded bg-blue-500 px-4 py-2 m-5 text-white focus:border-blue-300 focus:outline-none focus:ring'
         onClick={toggleModal}
       >
         View Recipe
       </button>
 
       {isOpen && (
-        <div className="fixed inset-2 z-50  flex align-middle items-center justify-center">
+        <div className="fixed border inset-2 z-50  flex align-middle items-center justify-center">
           <div className="bg-white p-8 rounded-md z-10 max-h-screen max-w-screen overflow-auto border shadow-lg">
             <h2 className="text-2xl font-bold mb-4">{title}</h2>
 
-            <div className="mb-4">
-              <h3 className="text-xl font-bold mb-2">Ingredients:</h3>
-              <ul className="list-disc pl-6">
-                {ingredients.map((ingredient, index) => (
-                  <li key={index} className="text-gray-700">
+            <div className='mb-4'>
+              <h3 className='mb-2 text-xl font-bold'>Ingredients:</h3>
+              <ul className='list-disc pl-6'>
+                {ingredients!.map((ingredient, index) => (
+                  <li key={index} className='text-gray-700'>
                     {ingredient}
                   </li>
                 ))}
@@ -45,22 +40,23 @@ const RecipeModal: React.FC<RecipeModalProps> = ({
             </div>
 
             <div>
-              <h3 className="text-xl font-bold mb-2">Instructions:</h3>
-              <ol className="list-disc pl-6">
-                {instructions.map((instruction, index) => (
-                  <p key={index} className="text-gray-700">
+              <h3 className='mb-2 text-xl font-bold'>Instructions:</h3>
+              <ol className='list-disc pl-6'>
+                {instructions!.map((instruction, index) => (
+                  <p key={index} className='text-gray-700'>
                     {index + 1}. {instruction}
                   </p>
                 ))}
               </ol>
             </div>
-
-            <button
-              className="mt-4 bg-red-500 text-white py-2 px-4 rounded focus:outline-none focus:ring focus:border-red-300"
-              onClick={toggleModal}
-            >
-              Close
-            </button>
+            <div className='flex justify-center content-center'>
+              <button
+                className='mt-4 rounded bg-red-500 px-4 py-2 text-white focus:border-red-300 focus:outline-none focus:ring'
+                onClick={toggleModal}
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}

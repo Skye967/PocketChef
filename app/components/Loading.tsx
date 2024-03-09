@@ -1,14 +1,14 @@
-import React from 'react'
-
+import React from 'react';
 
 function Loading() {
-
   return (
-    <div className="flex items-center justify-center flex-col mt-8">
-      <div className="border-t-4 border-blue-500 w-16 h-16 rounded-full animate-spin"></div>
-      <p className="mt-4 text-gray-600 text-lg">Please wait a moment while we generate some recipes</p>
+    <div className='mt-8 flex flex-col items-center justify-center'>
+      <div className='h-16 w-16 animate-spin rounded-full border-t-4 border-blue-500'></div>
+      <p className='mt-4 text-lg text-gray-600'>
+        Please wait a moment while we generate some recipes
+      </p>
     </div>
   );
 }
 
-export default Loading
+export default Loading;
