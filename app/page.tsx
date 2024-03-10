@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { RecipeList } from './components/RecipeList';
 import Loading from './components/Loading';
 import ErrorMessage from './components/ErrorMessage';
@@ -9,12 +9,14 @@ import Image from 'next/image';
 import logo from '../public/littleChefLogo.png';
 import { Recipe } from './util/constants';
 import { RecipeListConstructor } from './util/chatGPTParser';
+import { get } from 'http';
 
 
 export default function Home() {
   const [recipeList, setRecipeList] = useState<Recipe[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [getImages, setGetImages] = useState(false)
 
   const imageGenerator = async (prompt: string) => {
     const response = await fetch(`/api/generate-image`, {
@@ -29,51 +31,69 @@ export default function Home() {
     return image
   }
 
-  const HandleSubmit = async (
+
+  const image = async () => {
+    setError('')
+    if (recipeList !== null) {
+      for (let i = 0; i < recipeList.length; i ++) {
+        setTimeout(async () => {
+          if (!recipeList[i].imageUrl) {
+            try {
+              const imageUrl = await imageGenerator(recipeList[i].title!)
+              if (imageUrl.data[0].url) {
+                const nextRecipeList = recipeList
+                nextRecipeList[i].imageUrl = imageUrl.data[0].url
+                setRecipeList([...nextRecipeList])
+              }
+            } catch (error) {
+              setGetImages(false)
+              setError('Something went wrong, please try again!');
+              console.error('Something went wrong!', error);
+              throw error
+            }
+          }
+        }, 10000 * (i + 1));
+      }
+    }
+    setGetImages(false)
+    setError('')
+  }
+
+  const HandleSubmit = (
     ingredientList: String,
     mealType: string,
     numberOfRecipes: string,
     dietType: string
   ) => {
-    setError(null);
-    setIsLoading(true);
     try {
-      const list: Promise<Recipe[] | null> = RecipeListConstructor(
+      setRecipeList(null);
+      setError(null);
+      setIsLoading(true);
+      RecipeListConstructor(
         ingredientList,
         mealType,
         numberOfRecipes,
         dietType
-      );
-      setRecipeList(await list as Recipe[]);
+      ).then((data: Recipe[] | null) => {
+          setRecipeList(data)
+          setIsLoading(false)
+          setGetImages(true)
+        })
+
     } catch (error) {
-      console.log('Something went wrong!', error);
+      console.error('Something went wrong!', error);
+      setGetImages(false)
+      setIsLoading(false)
       setError('Something went wrong, please try again!');
+      return
     }
-    setIsLoading(false);
   };
 
   useEffect(() => {
-    
-    const image = async () => {
-      if (recipeList !== null) {
-        for (let i = 0; i < recipeList.length; i++) {
-          setTimeout(async () => {
-            if (!recipeList[i].imageUrl) {
-              const imageUrl: string = await imageGenerator(recipeList[i].title!)
-              if (typeof (imageUrl) === 'string') {
-                const nextRecipeList = recipeList
-                nextRecipeList[i].imageUrl = imageUrl
-                setRecipeList([...nextRecipeList])
-              }
-            }
-          }, 20000 * (i + 1));
-        }
-      }
-    }
-    if (recipeList) {
+    if(getImages && recipeList){
       image()
     }
-  })
+  }, [getImages])
 
   return (
     <main>
