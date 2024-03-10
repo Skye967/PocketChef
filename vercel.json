@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/generate-image/route.tsx": {
+      "maxDuration": 30
+    }
+  }
+}
