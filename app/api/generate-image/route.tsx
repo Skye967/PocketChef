@@ -32,10 +32,9 @@ export async function POST(
             n: 1,
             size: "1024x1024",
         });
-        const image_url = response.data[0].url;
-        return NextResponse.json(image_url)
+        return NextResponse.json(response)
     } catch (error: any) {
-        console.error(NextResponse.json(error))
+        console.error(error)
         return new Response(error, { status: 400 })
     }
 }
