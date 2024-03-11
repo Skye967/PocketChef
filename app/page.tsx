@@ -52,7 +52,7 @@ export default function Home() {
               throw error
             }
           }
-        }, 10000 * (i + 1));
+        }, 12000 * (i + 1));
       }
     }
     setGetImages(false)
