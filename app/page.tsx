@@ -7,10 +7,14 @@ import secondLayer from '../public/background/second.png'
 import thirdLayer from '../public/background/third.png'
 import fourthLayer from '../public/background/fourth.png'
 import TextLoop from './components/TextLoop'
-import { useEffect} from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link'
+import useImagePreloader from './hooks/useImagePreloader';
+import Spinner from './components/spinner';
 
 const Home = () => {
+    const imageCount = 5; // Update this number based on the total number of images
+    const { allLoaded, handleImageLoad } = useImagePreloader(imageCount);
 
     useEffect(() => {
         let xValue = 0, yValue = 0;
@@ -37,12 +41,14 @@ const Home = () => {
 
     return (
         <main>
+            {!allLoaded && <Spinner/>}
             <Image
                 src={background}
                 alt="Picture of the author"
                 data-speedx='0.3'
                 data-speedy='0.3'
                 className='paralax bg-img'
+                onLoad={handleImageLoad}
             />
             <Image
                 src={firstLayer}
@@ -50,6 +56,7 @@ const Home = () => {
                 data-speedx='0.05'
                 data-speedy='0.05'
                 className='paralax layer-1'
+                onLoad={handleImageLoad}
             />
             <Image
                 src={secondLayer}
@@ -57,6 +64,7 @@ const Home = () => {
                 data-speedx='0.1'
                 data-speedy='0.1'
                 className='paralax layer-2'
+                onLoad={handleImageLoad}
             />
             <Image
                 src={thirdLayer}
@@ -64,6 +72,7 @@ const Home = () => {
                 data-speedx='0.15'
                 data-speedy='0.15'
                 className='paralax layer-3'
+                onLoad={handleImageLoad}
             />
             <Image
                 src={fourthLayer}
@@ -71,6 +80,7 @@ const Home = () => {
                 data-speedx='0.2'
                 data-speedy='0.2'
                 className='paralax layer-4'
+                onLoad={handleImageLoad}
             />
             <div className='pocket paralax'>
                 <h1 className='drop-shadow-[0_5.2px_5.2px_rgba(0,0,0,0.8)]'>PocketChef</h1>
