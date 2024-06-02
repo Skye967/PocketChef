@@ -1,122 +1,103 @@
-'use client';
-
-import React, { useCallback, useEffect, useState } from 'react';
-import { RecipeList } from './components/RecipeList';
-import Loading from './components/Loading';
-import ErrorMessage from './components/ErrorMessage';
-import RecipeForm from './components/RecipeForm';
+'use client'
+import './landing.css'
 import Image from 'next/image';
-import logo from '../public/littleChefLogo.png';
-import { Recipe } from './util/constants';
-import { RecipeListConstructor } from './util/chatGPTParser';
-import { get } from 'http';
+import background from '../public/background/background.png'
+import firstLayer from '../public/background/first.png'
+import secondLayer from '../public/background/second.png'
+import thirdLayer from '../public/background/third.png'
+import fourthLayer from '../public/background/fourth.png'
+import TextLoop from './components/TextLoop'
+import { useEffect, useState } from 'react';
+import Link from 'next/link'
+import useImagePreloader from './hooks/useImagePreloader';
+import Spinner from './components/spinner';
+
+const Home = () => {
+    const imageCount = 5; // Update this number based on the total number of images
+    const { allLoaded, handleImageLoad } = useImagePreloader(imageCount);
+
+    useEffect(() => {
+        let xValue = 0, yValue = 0;
+        const handleMouseMove = (event: MouseEvent) => {
+            xValue = event.clientX - window.innerWidth / 2;
+            yValue = event.clientY - window.innerHeight / 2;
+
+            const paralax_el = document.querySelectorAll(".paralax") as NodeListOf<HTMLElement>;
+            paralax_el.forEach((el) => {
+                let speedx = Number(el.dataset.speedx);
+                let speedy = Number(el.dataset.speedy);
+                el.style.transform = `translateX(calc(0% + ${xValue * speedx}px )) translateY(calc(0% + ${yValue * speedy}px))`;
+            });
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+
+        // Cleanup the event listener on component unmount
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+        };
+    }, []);
 
 
-export default function Home() {
-  const [recipeList, setRecipeList] = useState<Recipe[] | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [getImages, setGetImages] = useState(false)
+    return (
+        <main>
+            {!allLoaded && <Spinner/>}
+            <Image
+                src={background}
+                alt="Picture of the author"
+                data-speedx='0.3'
+                data-speedy='0.3'
+                className='paralax bg-img'
+                onLoad={handleImageLoad}
+            />
+            <Image
+                src={firstLayer}
+                alt="Picture of the author"
+                data-speedx='0.05'
+                data-speedy='0.05'
+                className='paralax layer-1'
+                onLoad={handleImageLoad}
+            />
+            <Image
+                src={secondLayer}
+                alt="Picture of the author"
+                data-speedx='0.1'
+                data-speedy='0.1'
+                className='paralax layer-2'
+                onLoad={handleImageLoad}
+            />
+            <Image
+                src={thirdLayer}
+                alt="Picture of the author"
+                data-speedx='0.15'
+                data-speedy='0.15'
+                className='paralax layer-3'
+                onLoad={handleImageLoad}
+            />
+            <Image
+                src={fourthLayer}
+                alt="Picture of the author"
+                data-speedx='0.2'
+                data-speedy='0.2'
+                className='paralax layer-4'
+                onLoad={handleImageLoad}
+            />
+            <div className='pocket paralax'>
+                <h1 className='drop-shadow-[0_5.2px_5.2px_rgba(0,0,0,0.8)]'>PocketChef</h1>
+            </div>
+            <div className='text-loop '>
+                <TextLoop />
+            </div>
+            <Link className='button-89' href="/landing">
+                Try for free
+                {/* <button className='button-89'>Try for free</button> */}
+            </Link>
 
-  const imageGenerator = async (prompt: string) => {
-    const response = await fetch(`/api/generate-image`, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ prompt: prompt })
-    })
-    const image = response.json()
-    return image
-  }
+
+        </main>
+    );
+};
+
+export default Home;
 
 
-  const image = async () => {
-    setError('')
-    if (recipeList !== null) {
-      for (let i = 0; i < recipeList.length; i ++) {
-        setTimeout(async () => {
-          if (!recipeList[i].imageUrl) {
-            try {
-              const imageUrl = await imageGenerator(recipeList[i].title!)
-              if (imageUrl.data[0].url) {
-                const nextRecipeList = recipeList
-                nextRecipeList[i].imageUrl = imageUrl.data[0].url
-                setRecipeList([...nextRecipeList])
-              }
-            } catch (error) {
-              setGetImages(false)
-              setError('Something went wrong, please try again!');
-              console.error('Something went wrong!', error);
-              throw error
-            }
-          }
-        }, 12000 * (i + 1));
-      }
-    }
-    setGetImages(false)
-    setError('')
-  }
-
-  const HandleSubmit = (
-    ingredientList: String,
-    mealType: string,
-    numberOfRecipes: string,
-    dietType: string
-  ) => {
-    try {
-      setRecipeList(null);
-      setError(null);
-      setIsLoading(true);
-      RecipeListConstructor(
-        ingredientList,
-        mealType,
-        numberOfRecipes,
-        dietType
-      ).then((data: Recipe[] | null) => {
-          setRecipeList(data)
-          setIsLoading(false)
-          setGetImages(true)
-        })
-
-    } catch (error) {
-      console.error('Something went wrong!', error);
-      setGetImages(false)
-      setIsLoading(false)
-      setError('Something went wrong, please try again!');
-      return
-    }
-  };
-
-  useEffect(() => {
-    if(getImages && recipeList){
-      image()
-    }
-  }, [getImages])
-
-  return (
-    <main>
-      <div className='flex justify-between bg-gradient-to-r from-emerald-300 via-emerald-800 to-emerald-300 p-6 text-white shadow-sm shadow-black'>
-        <div className='w-1/3'>
-          <Image
-            src={logo}
-            alt='PocketChef Logo'
-            className='h-20 w-20 rounded-full bg-white p-1'
-          />
-        </div>
-        <div className='flex w-1/3 place-items-center justify-center'>
-          <h1 className='text-center text-3xl font-bold '>PocketChef</h1>
-        </div>
-        <div className='w-1/3'></div>
-      </div>
-      <RecipeForm onSubmit={HandleSubmit} />
-      {!isLoading && error && <ErrorMessage message={error} />}
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <RecipeList recipes={recipeList} />
-      )}
-    </main>
-  );
-}
