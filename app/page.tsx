@@ -11,32 +11,37 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link'
 import useImagePreloader from './hooks/useImagePreloader';
 import Spinner from './components/spinner';
+import { isMobile } from 'react-device-detect';
 
 const Home = () => {
     const imageCount = 5; // Update this number based on the total number of images
     const { allLoaded, handleImageLoad } = useImagePreloader(imageCount);
 
     useEffect(() => {
-        let xValue = 0, yValue = 0;
-        const handleMouseMove = (event: MouseEvent) => {
-            xValue = event.clientX - window.innerWidth / 2;
-            yValue = event.clientY - window.innerHeight / 2;
 
-            const paralax_el = document.querySelectorAll(".paralax") as NodeListOf<HTMLElement>;
-            paralax_el.forEach((el) => {
-                let speedx = Number(el.dataset.speedx);
-                let speedy = Number(el.dataset.speedy);
-                el.style.transform = `translateX(calc(0% + ${xValue * speedx}px )) translateY(calc(0% + ${yValue * speedy}px))`;
-            });
-        };
+        if(!isMobile){
+            let xValue = 0, yValue = 0;
+            const handleMouseMove = (event: MouseEvent) => {
+                xValue = event.clientX - window.innerWidth / 2;
+                yValue = event.clientY - window.innerHeight / 2;
+    
+                const paralax_el = document.querySelectorAll(".paralax") as NodeListOf<HTMLElement>;
+                paralax_el.forEach((el) => {
+                    let speedx = Number(el.dataset.speedx);
+                    let speedy = Number(el.dataset.speedy);
+                    el.style.transform = `translateX(calc(0% + ${xValue * speedx}px )) translateY(calc(0% + ${yValue * speedy}px))`;
+                });
+            };
+    
+            window.addEventListener('mousemove', handleMouseMove);
+    
+            // Cleanup the event listener on component unmount
+            return () => {
+                window.removeEventListener('mousemove', handleMouseMove);
+            };
+        }
 
-        window.addEventListener('mousemove', handleMouseMove);
-
-        // Cleanup the event listener on component unmount
-        return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
-        };
-    }, []);
+    }, [isMobile]);
 
 
     return (
