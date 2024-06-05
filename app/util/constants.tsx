@@ -33,4 +33,9 @@ export const dietCategories = [
   'Atkins',
 ];
 
-export const test = '';
+export const amountOfRecipes = [
+  '5',
+  '10',
+  '15',
+  '20'
+];
