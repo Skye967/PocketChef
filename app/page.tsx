@@ -93,9 +93,8 @@ const Home = () => {
             <div className='text-loop '>
                 <TextLoop />
             </div>
-            <Link className='button-89' href="/landing">
+            <Link className='button-89' href="/chef">
                 Try for free
-                {/* <button className='button-89'>Try for free</button> */}
             </Link>
 
 

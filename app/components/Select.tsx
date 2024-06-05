@@ -31,7 +31,7 @@ const SelectDropdown: React.FC<SelectProps> = (SelectProps) => {
                     onClick={toggleDropdown}
                     className="mt-2 w-full bg-white border border-gray-300 rounded-md shadow-sm px-4 py-2 text-left cursor-pointer hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                    <p className="cursor-pointer hover:bg-blue-100" onClick={() => handleChange(SelectProps.defaultValue)}>{SelectProps.label}</p>
+                    {selectedOption || <p className="cursor-pointer hover:bg-blue-100" onClick={() => handleChange(SelectProps.defaultValue)}>{SelectProps.label}</p>}
                 </button>
                 {isOpen && (
                     <ul
