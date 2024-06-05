@@ -1,6 +1,6 @@
 'use client';
 
-import '../landing/form.css'
+import '../chef/form.css'
 import React, { useState, FormEvent } from 'react';
 import { mealCategories, dietCategories, amountOfRecipes } from '../util/constants';
 import Select from './Select';
