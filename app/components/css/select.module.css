@@ -1,0 +1,15 @@
+/* components/SelectDropdown.module.css */
+.dropdown {
+  animation: dropdownAnimation 0.5s ease-in-out forwards;
+}
+
+@keyframes dropdownAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

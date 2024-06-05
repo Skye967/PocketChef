@@ -6,8 +6,6 @@ import { RecipeList } from '../components/RecipeList';
 import Loading from '../components/Loading';
 import ErrorMessage from '../components/ErrorMessage';
 import RecipeForm from '../components/RecipeForm';
-import Image from 'next/image';
-import logo from '../../public/littleChefLogo.png';
 import { Recipe } from '../util/constants';
 import { RecipeListConstructor } from '../util/chatGPTParser';
 
@@ -97,20 +95,6 @@ export default function Home() {
 
   return (
     <main className='all flex flex-col w-full h-full pb-10'>
-      
-      {/* <div className='flex w-full justify-between bg-gradient-to-r from-emerald-300 via-emerald-800 to-emerald-300 p-6 text-white shadow-sm shadow-black'>
-        <div className='w-1/3'>
-          <Image
-            src={logo}
-            alt='PocketChef Logo'
-            className='h-20 w-20 rounded-full bg-white p-1'
-          />
-        </div>
-        <div className='flex w-1/3 place-items-center justify-center'>
-          <h1 className='text-center text-3xl font-bold'>PocketChef</h1>
-        </div>
-        <div className='w-1/3'></div>
-      </div> */}
       <RecipeForm onSubmit={HandleSubmit} />
       {!isLoading && error && <ErrorMessage message={error} />}
       {isLoading ? (

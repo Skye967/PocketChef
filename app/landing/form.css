@@ -7,8 +7,8 @@
 }
 
 .bg {
-  height: 100vh;
-  position: absolute;
+  height: 100%;
+  position: fixed;
   z-index: -1;
   top: 0;
   right: 0;
@@ -142,7 +142,7 @@
 
   .form-floating:focus-within {
     z-index: 2;
-    
+
     &:focus-within {
       z-index: 2;
     }
@@ -159,3 +159,4 @@
     border-top-right-radius: 0;
   }
 }
+
