@@ -13,6 +13,7 @@
   "dependencies": {
     "axios": "^1.6.7",
     "framer-motion": "^11.2.3",
+    "gsap": "^3.12.5",
     "loadable-image": "^3.1.1",
     "next": "14.1.0",
     "openai": "^4.28.4",

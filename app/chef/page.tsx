@@ -9,8 +9,12 @@ import RecipeForm from '../components/RecipeForm';
 import { Recipe } from '../util/constants';
 import { RecipeListConstructor } from '../util/chatGPTParser';
 
+type ChefProps = {
+  flip: () => void
+}
 
-export default function Home() {
+
+const Home: React.FC<ChefProps> = ({ flip }) => {
   const [recipeList, setRecipeList] = useState<Recipe[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -94,7 +98,10 @@ export default function Home() {
   }, [getImages])
 
   return (
-    <main className='all flex flex-col w-full h-full pb-10'>
+    <main className='chef'>
+      <button className='back-89' onClick={flip}>
+        Go Back
+      </button>
       <RecipeForm onSubmit={HandleSubmit} />
       {!isLoading && error && <ErrorMessage message={error} />}
       {isLoading ? (
@@ -111,3 +118,5 @@ export default function Home() {
     </main >
   );
 }
+
+export default Home

@@ -10,7 +10,7 @@
   background-color: 0b372dbb;
 }
 
-main {
+.main {
   position: relative;
   display: flex;
   justify-content: center;
