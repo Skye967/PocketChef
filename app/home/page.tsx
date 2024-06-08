@@ -7,8 +7,7 @@ import secondLayer from '../../public/background/second.png'
 import thirdLayer from '../../public/background/third.png'
 import fourthLayer from '../../public/background/fourth.png'
 import TextLoop from '../components/TextLoop'
-import { useEffect, useState } from 'react';
-import Link from 'next/link'
+import { useEffect } from 'react';
 import useImagePreloader from '../hooks/useImagePreloader';
 import Spinner from '../components/spinner';
 import { isMobile } from 'react-device-detect';
