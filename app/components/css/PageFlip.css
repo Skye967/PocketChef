@@ -77,7 +77,7 @@ body {
   position: absolute;
   z-index: 10;
   bottom: 10%;
-  left: 40%;
+  left: 35%;
 
 --b: 3px;   /* border thickness */
 --s: .45em; /* size of the corner */
@@ -115,14 +115,14 @@ color: #fff;
 .button-91 {
   position: absolute;
   z-index: 10;
-  top: 5%;
-  right: 5%;
+  top: 2%;
+  right: 2%;
 
 --b: 3px;   /* border thickness */
 --s: .45em; /* size of the corner */
 --color: #373B44;
 
-padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+padding: calc(.1em + var(--s)) calc(.4em + var(--s));
 color: var(--color);
 --_p: var(--s);
 background-color: white;
