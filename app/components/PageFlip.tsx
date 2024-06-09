@@ -2,23 +2,25 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import './css/PageFlip.css'
-import Landing from '../home/page'
-import Chef from '../chef/page'
+import Landing from './Landing';
+import Chef from './Chef';
 
 const PageFlip: React.FC = () => {
     const siteRef = useRef<HTMLDivElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const newContentRef = useRef<HTMLDivElement>(null);
     const [isFlipped, setIsFlipped] = useState(false);
-    const [siteW, setSiteW] = useState(400);
-    const [siteH, setSiteH] = useState(400);
+    const [siteW, setSiteW] = useState(0);
+    const [siteH, setSiteH] = useState(0);
 
     useEffect(() => {
-
+        
         function handleResize() {
             setSiteW(window.innerWidth)
             setSiteH(window.innerHeight)
         }
+
+        handleResize()
 
         document.querySelectorAll('p').forEach((p) => {
             p.style.lineHeight = `${siteH}px`;
@@ -38,11 +40,13 @@ const PageFlip: React.FC = () => {
 
         const tlFlip = gsap.timeline();
 
+        // x: -siteW, left: siteW,
+
         if (!isFlipped) {
             tlFlip
                 .to(siteRef.current, { scale: 0.6, duration: 0.5, ease: 'power2.inOut' }, 'start')
-                .to(containerRef.current, { rotationY: -90, z: -siteW, x: -siteW, left: siteW , duration: 0.4, ease: 'power2.inOut' }, 'start+=0.7')
-                .to(siteRef.current, { scale: 1, duration: 0.5, ease: 'power2.inOut'}, 'start+=1.2')
+                .to(containerRef.current, { rotationY: -90, z: -siteW,  duration: 0.4, ease: 'power2.inOut' }, 'start+=0.7')
+                .to(siteRef.current, { scale: 1, duration: 0.5, ease: 'power2.inOut' }, 'start+=1.2')
         } else {
             tlFlip
                 .to(siteRef.current, { scale: 0.6, duration: 0.5, ease: 'power2.inOut' }, 'start')
@@ -57,10 +61,16 @@ const PageFlip: React.FC = () => {
         <div className="site" ref={siteRef}>
             <div className="container" ref={containerRef}>
                 <div className="page-content">
-                    <Landing flip={handleClick} />
+                    <button className='button-90' onClick={handleClick}>
+                        Go Back
+                    </button>
+                    <Landing/>
                 </div>
                 <div className="page-content" id="new-content" ref={newContentRef}>
-                    <Chef flip={handleClick} />
+                    <button className='button-91' onClick={handleClick}>
+                        Go Back
+                    </button>
+                    <Chef/>
                 </div>
             </div>
         </div>

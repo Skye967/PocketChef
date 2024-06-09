@@ -13,7 +13,7 @@ import Spinner from '../components/spinner';
 import { isMobile } from 'react-device-detect';
 
 
-const home: React.FC = () => {
+const Landing: React.FC = () => {
     const imageCount = 5; // Update this number based on the total number of images
     const { allLoaded, handleImageLoad } = useImagePreloader(imageCount);
 
@@ -93,13 +93,9 @@ const home: React.FC = () => {
             <div className='text-loop '>
                 <TextLoop />
             </div>
-            {/* <button className='button-89' onClick={LandingProps.flip}>
-                Try for free
-            </button> */}
         </main>
     );
 };
 
-export default home;
-
+export default Landing;
 

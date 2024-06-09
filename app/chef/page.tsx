@@ -9,9 +9,6 @@ import RecipeForm from '../components/RecipeForm';
 import { Recipe } from '../util/constants';
 import { RecipeListConstructor } from '../util/chatGPTParser';
 
-// type ChefProps = {
-//   flip: () => void
-// }
 
 const Home: React.FC = () => {
   const [recipeList, setRecipeList] = useState<Recipe[] | null>(null);
@@ -98,7 +95,7 @@ const Home: React.FC = () => {
 
   return (
     <main className='chef'>
-      {/* <button className='back-89' onClick={flip}>
+      {/* <button className='button-89' onClick={flip}>
         Go Back
       </button> */}
       <RecipeForm onSubmit={HandleSubmit} />
