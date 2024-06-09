@@ -172,14 +172,14 @@
 .back-89 {
   position: absolute;
   z-index: 10;
-  top: 20px;
-  right: 20px;
+  top: 10px;
+  right: 10px;
 
   --b: 3px; /* border thickness */
   --s: 0.45em; /* size of the corner */
   --color: #373b44;
 
-  padding: calc(0.5em + var(--s)) calc(0.9em + var(--s));
+  padding: calc(0.2em + var(--s)) calc(0.4em + var(--s));
   color: var(--color);
   --_p: var(--s);
   background-color: white;

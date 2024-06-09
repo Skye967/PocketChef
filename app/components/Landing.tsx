@@ -12,8 +12,12 @@ import useImagePreloader from '../hooks/useImagePreloader';
 import Spinner from '../components/spinner';
 import { isMobile } from 'react-device-detect';
 
+type LandingProps = {
+    flip: () => void;
+}
 
-const Landing: React.FC = () => {
+
+const Landing: React.FC<LandingProps> = ({flip}) => {
     const imageCount = 5; // Update this number based on the total number of images
     const { allLoaded, handleImageLoad } = useImagePreloader(imageCount);
 
@@ -93,6 +97,9 @@ const Landing: React.FC = () => {
             <div className='text-loop '>
                 <TextLoop />
             </div>
+            <button className='button-89' onClick={flip}>
+                Try for free
+            </button>
         </main>
     );
 };

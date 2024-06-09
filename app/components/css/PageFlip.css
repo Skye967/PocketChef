@@ -77,7 +77,7 @@ body {
   position: absolute;
   z-index: 10;
   bottom: 10%;
-  left: 35%;
+  left: 40%;
 
 --b: 3px;   /* border thickness */
 --s: .45em; /* size of the corner */

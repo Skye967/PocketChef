@@ -61,16 +61,10 @@ const PageFlip: React.FC = () => {
         <div className="site" ref={siteRef}>
             <div className="container" ref={containerRef}>
                 <div className="page-content">
-                    <button className='button-90' onClick={handleClick}>
-                        Go Back
-                    </button>
-                    <Landing/>
+                    <Landing flip={handleClick}/>
                 </div>
                 <div className="page-content" id="new-content" ref={newContentRef}>
-                    <button className='button-91' onClick={handleClick}>
-                        Go Back
-                    </button>
-                    <Chef/>
+                    <Chef flip={handleClick}/>
                 </div>
             </div>
         </div>
