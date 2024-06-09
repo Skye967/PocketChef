@@ -24,7 +24,7 @@ export const RecipeList: React.FC<RecipeListComponentProps> = ({ recipes }) => {
             )})}
           </ul>
         ) : (
-          <p className='text-gray-700'>No recipes available.</p>
+          <span className='text-gray-700'>No recipes available.</span>
         )}
       </div>
     </div>

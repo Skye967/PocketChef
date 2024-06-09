@@ -10,7 +10,7 @@ import { Recipe } from '../util/constants';
 import { RecipeListConstructor } from '../util/chatGPTParser';
 
 
-export default function Home() {
+const Home: React.FC = () => {
   const [recipeList, setRecipeList] = useState<Recipe[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -94,7 +94,10 @@ export default function Home() {
   }, [getImages])
 
   return (
-    <main className='all flex flex-col w-full h-full pb-10'>
+    <main className='chef'>
+      {/* <button className='button-89' onClick={flip}>
+        Go Back
+      </button> */}
       <RecipeForm onSubmit={HandleSubmit} />
       {!isLoading && error && <ErrorMessage message={error} />}
       {isLoading ? (
@@ -111,3 +114,5 @@ export default function Home() {
     </main >
   );
 }
+
+export default Home

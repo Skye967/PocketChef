@@ -43,9 +43,9 @@ const RecipeModal: React.FC<Recipe> = ({
               <h3 className='mb-2 text-xl font-bold'>Instructions:</h3>
               <ol className='list-disc pl-6'>
                 {instructions!.map((instruction, index) => (
-                  <p key={index} className='text-gray-700'>
+                  <li key={index} className='text-gray-700'>
                     {index + 1}. {instruction}
-                  </p>
+                  </li>
                 ))}
               </ol>
             </div>
