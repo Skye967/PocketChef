@@ -29,7 +29,7 @@ const RecipeModal: React.FC<Recipe> = ({
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ prompt: title })
+        body: JSON.stringify({ prompt: `A photgraph of a ${title} dish.` })
       })
       const image = await response.json()
       setUrl(image.data[0].url)
