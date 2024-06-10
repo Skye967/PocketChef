@@ -60,10 +60,10 @@ const PageFlip: React.FC = () => {
     return (
         <div className="site" ref={siteRef}>
             <div className="container" ref={containerRef}>
-                <div className="page-content">
+                <div className="page-content overflow-scroll">
                     <Landing flip={handleClick}/>
                 </div>
-                <div className="page-content" id="new-content" ref={newContentRef}>
+                <div className="page-content overflow-scroll" id="new-content" ref={newContentRef}>
                     <Chef flip={handleClick}/>
                 </div>
             </div>
