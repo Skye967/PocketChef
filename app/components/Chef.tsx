@@ -1,7 +1,7 @@
 'use client';
 
 import '../chef/form.css'
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { RecipeList } from './RecipeList';
 import Loading from './Loading';
 import ErrorMessage from './ErrorMessage';
@@ -47,7 +47,7 @@ const Chef: React.FC<ChefProps> = ({ flip }) => {
     };
 
     return (
-        <main className='chef'>
+        <main className='chef overflow-scroll'>
             <button className='back-89' onClick={flip}>
                 Go Back
             </button>
