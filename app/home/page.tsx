@@ -84,7 +84,7 @@ const home: React.FC = () => {
                 alt="Picture of the author"
                 data-speedx='0.2'
                 data-speedy='0.2'
-                className='paralax layer-4'
+                className='paralax layer-4 '
                 onLoad={handleImageLoad}
             />
             <div className='pocket paralax'>
