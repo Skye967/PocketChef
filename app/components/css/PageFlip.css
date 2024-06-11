@@ -10,13 +10,11 @@ body {
 @media {
   .container{
     min-width: 100%;
-    min-height: 100%;
   }
 }
 
 .site {
   height: 100%;
-  width: 100%;
   justify-content: center;
   align-items: center;
 }
