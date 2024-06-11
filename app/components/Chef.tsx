@@ -47,7 +47,7 @@ const Chef: React.FC<ChefProps> = ({ flip }) => {
     };
 
     return (
-        <main className='chef overflow-scroll'>
+        <main className='chef'>
             <button className='back-89' onClick={flip}>
                 Go Back
             </button>
