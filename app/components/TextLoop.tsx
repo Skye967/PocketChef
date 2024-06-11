@@ -51,7 +51,7 @@ const TextAnimation: React.FC = () => {
         typingRender(messages[messageIndex], setTypedText, interval);
     }, [interval, messageIndex]);
     return (
-        <span className={`text-center text-2xl transition-opacity ${fading ? 'opacity-0' : 'opacity-100'}`}>{typedText}</span>
+        <span className={`text-center text-2xl transition-opacity duration-1000 ${fading ? 'opacity-0' : 'opacity-100'}`}>{typedText}</span>
     )
 };
 
