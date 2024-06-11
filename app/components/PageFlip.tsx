@@ -13,7 +13,6 @@ const PageFlip: React.FC = () => {
     const [isFlipped, setIsFlipped] = useState(false);
     const [siteW, setSiteW] = useState(0);
     const [siteH, setSiteH] = useState(0);
-    const [page, setPage] = useState(true);
 
     useEffect(() => {
 
@@ -26,10 +25,15 @@ const PageFlip: React.FC = () => {
 
         gsap.set(siteRef.current, { perspective: 5000 });
         gsap.set(containerRef.current, { transformStyle: 'preserve-3d', transformOrigin: '-0% 50%' });
-        gsap.set(newContentRef.current, { rotationY: 90, z: -siteW / 2, x: siteW / 2 });
+        if (isFlipped) {
+            gsap.set(newContentRef.current, { rotationY: 0, z: siteW, x: 0});
+        } else {
+            gsap.set(newContentRef.current, { rotationY: 90, z: -siteW / 2, x: siteW / 2 });
+        }
+
 
         window.addEventListener('resize', handleResize)
-    }, [siteH, siteW, page]);
+    }, [siteH, siteW]);
 
 
 
@@ -44,14 +48,14 @@ const PageFlip: React.FC = () => {
                 .to(containerRef.current, { rotationY: -90, z: -siteW, duration: 1, ease: 'power2.inOut' }, 'start+=0.7')
                 .to(siteRef.current, { scale: 1, duration: 1, ease: 'power2.inOut' }, 'start+=1.2')
                 .then(() => {
-                    gsap.set(newContentRef.current, { rotationY: 0, z: siteW, x: 0, transformStyle: 'preserve-3d' });
-                    gsap.set(firstContentRef.current, { rotationY: -90, z: siteW / 2, x: -siteW / 2, transformStyle: 'preserve-3d' });
-                    gsap.set(containerRef.current, { rotationY: 0, transformStyle: 'preserve-3d' });
+                    gsap.set(newContentRef.current, { rotationY: 0, z: siteW, x: 0 });
+                    gsap.set(firstContentRef.current, { rotationY: -90, z: siteW / 2, x: -siteW / 2 });
+                    gsap.set(containerRef.current, { rotationY: 0 });
                 })
         } else {
-            gsap.set(newContentRef.current, { rotationY: 90, z: -siteW / 2, x: siteW / 2, transformStyle: 'preserve-3d' });
-            gsap.set(firstContentRef.current, { rotationY: 0, z: 0, x: 0, transformStyle: 'preserve-3d' });
-            gsap.set(containerRef.current, { rotationY: -90, z: -siteW , transformStyle: 'preserve-3d' });
+            gsap.set(newContentRef.current, { rotationY: 90, z: -siteW / 2, x: siteW / 2 });
+            gsap.set(firstContentRef.current, { rotationY: 0, z: 0, x: 0 });
+            gsap.set(containerRef.current, { rotationY: -90, z: -siteW });
 
             tlFlip
                 .to(siteRef.current, { scale: 0.6, duration: 1, ease: 'power2.inOut' }, 'start')
@@ -66,10 +70,10 @@ const PageFlip: React.FC = () => {
         <div className="site" ref={siteRef}>
             <div className="container" ref={containerRef}>
                 <div className="page-content" ref={firstContentRef}>
-                    <Landing flip={handleClick}/>
+                    <Landing flip={handleClick} />
                 </div>
                 <div className="page-content" id="new-content" ref={newContentRef}>
-                    <Chef flip={handleClick}/>
+                    <Chef flip={handleClick} />
                 </div>
             </div>
         </div>
