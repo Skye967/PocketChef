@@ -47,7 +47,7 @@ const Chef: React.FC<ChefProps> = ({ flip }) => {
     };
 
     return (
-        <main className='chef'>
+        <div className='chef'>
             <button className='back-89' onClick={flip}>
                 Go Back
             </button>
@@ -64,7 +64,7 @@ const Chef: React.FC<ChefProps> = ({ flip }) => {
 
 
             </div>
-        </main >
+        </div >
     );
 }
 
