@@ -53,12 +53,13 @@ const Chef: React.FC<ChefProps> = ({ flip }) => {
             </button>
             <RecipeForm onSubmit={HandleSubmit} />
             {!isLoading && error && <ErrorMessage message={error} />}
-            {isLoading ? (
-                <Loading />
-            ) : (
-                <RecipeList recipes={recipeList} />
-            )}
-
+            <div className='p-[20%]'>
+                {isLoading ? (
+                    <Loading />
+                ) : (
+                    <RecipeList recipes={recipeList} />
+                )}
+            </div>
 
             <div className="bg">
 
