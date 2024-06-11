@@ -13,16 +13,88 @@
   height: 100%;
   padding-bottom: 10%;
   overflow: scroll;
+
+  background-image: radial-gradient(
+      circle at 30% 86%,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0.03) 8%,
+      transparent 8%,
+      transparent 92%
+    ),
+    radial-gradient(
+      circle at 55% 100%,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0.03) 8%,
+      transparent 8%,
+      transparent 92%
+    ),
+    radial-gradient(
+      circle at 40% 75%,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0.03) 6%,
+      transparent 6%,
+      transparent 94%
+    ),
+    radial-gradient(
+      circle at 7% 99%,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0.03) 6%,
+      transparent 6%,
+      transparent 94%
+    ),
+    radial-gradient(
+      circle at 69% 76%,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0.03) 6%,
+      transparent 6%,
+      transparent 94%
+    ),
+    radial-gradient(
+      circle at 2% 35%,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0.03) 6%,
+      transparent 6%,
+      transparent 94%
+    ),
+    radial-gradient(
+      circle at 14% 48%,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0.03) 6%,
+      transparent 6%,
+      transparent 94%
+    ),
+    radial-gradient(
+      circle at 28% 87%,
+      rgba(255, 255, 255, 0.04) 0%,
+      rgba(255, 255, 255, 0.04) 4%,
+      transparent 4%,
+      transparent 96%
+    ),
+    radial-gradient(
+      circle at 65% 14%,
+      rgba(255, 255, 255, 0.04) 0%,
+      rgba(255, 255, 255, 0.04) 4%,
+      transparent 4%,
+      transparent 96%
+    ),
+    radial-gradient(
+      circle at 51% 36%,
+      rgba(255, 255, 255, 0.04) 0%,
+      rgba(255, 255, 255, 0.04) 4%,
+      transparent 4%,
+      transparent 96%
+    ),
+    radial-gradient(
+      circle at 6% 93%,
+      rgba(255, 255, 255, 0.04) 0%,
+      rgba(255, 255, 255, 0.04) 4%,
+      transparent 4%,
+      transparent 96%
+    ),
+    linear-gradient(135deg, rgb(23, 233, 173), rgb(29, 24, 208));
 }
 
 .bg {
-  height: 100%;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-
   background-image: radial-gradient(
       circle at 30% 86%,
       rgba(255, 255, 255, 0.03) 0%,

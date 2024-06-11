@@ -94,7 +94,7 @@ const home: React.FC = () => {
             <div className='text-loop '>
                 <TextLoop />
             </div>
-            <Link className='button-89' href="/chef">Try for free</Link>
+            <Link className='button-89' href="/home">Try for free</Link>
         </main>
     );
 };

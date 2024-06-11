@@ -1,11 +1,6 @@
 /* styles/globals.css */
 
-/* html,
-body {
-  height: 100%;
-  width: 100%;
-  background: #333;
-} */
+
 
 @media {
   .container{
@@ -40,10 +35,23 @@ body {
   width: 100%;
   height: 100%;
   background: #1abc9c;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
 }
 
 #new-content {
   background: #f1c40f;
+  z-index: 1;
+}
+
+#new-content-2 {
+  background: #f1c40f;
+  z-index: 1;
+}
+
+#new-content-3 {
+  background: red;
   z-index: 1;
 }
 

@@ -22,8 +22,6 @@
 
 .paralax {
   pointer-events: none;
-  /* transform: translateX(calc(-55%)) translateY(calc(-55%)); */
-  /* border: 3px solid green; */
 }
 
 .bg-img {
@@ -134,27 +132,3 @@
   color: #fff;
 }
 
-.text-center {
-  text-align: center;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
-.transition-opacity {
-  transition-property: opacity;
-}
-
-.duration-1000 {
-  transition-duration: 1000ms;
-}
-
-.opacity-0 {
-  opacity: 0;
-}
-
-.opacity-100 {
-  opacity: 1;
-}
