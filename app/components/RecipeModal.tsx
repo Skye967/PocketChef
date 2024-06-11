@@ -107,7 +107,7 @@ const RecipeModal: React.FC<Recipe> = ({
                 ))}
               </ol>
             </div>
-            <div className='flex justify-center content-center'>
+            <div className='flex justify-center content-center mb-20'>
               <button
                 className='mt-4 rounded bg-red-500 px-4 py-2 text-white focus:border-red-300 focus:outline-none focus:ring'
                 onClick={toggleModal}
