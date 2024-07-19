@@ -1,9 +1,10 @@
 'use client';
 
+import styles from './css/select.module.css';
 import '../chef/form.css'
 import React, { useState, FormEvent } from 'react';
 import { mealCategories, dietCategories, amountOfRecipes } from '../util/constants';
-import Select from './Select';
+import SelectDropdown from './Select';
 
 type FoodInputComponentProps = {
   onSubmit: (
@@ -60,8 +61,7 @@ const RecipeForm: React.FC<FoodInputComponentProps> = ({ onSubmit }) => {
         >
           Select a Meal Category(Optional):
         </label>
-
-        <Select onSelect={setMealType} options={mealCategories} defaultValue={''} label={'Choose a Category'}/>
+        <SelectDropdown onSelect={setMealType} options={mealCategories} defaultValue={''} label={'Choose a Category'}/>
 
         <div className='m-5 border'></div>
 
@@ -72,7 +72,7 @@ const RecipeForm: React.FC<FoodInputComponentProps> = ({ onSubmit }) => {
           How many recipes:
         </label>
 
-        <Select onSelect={setNumberOfRecipes} options={amountOfRecipes} defaultValue={'5'} label={'5'}/>
+        <SelectDropdown onSelect={setNumberOfRecipes} options={amountOfRecipes} defaultValue={'5'} label={'Number of Recipes'}/>
 
         <div className='m-5 border'></div>
 
@@ -80,7 +80,7 @@ const RecipeForm: React.FC<FoodInputComponentProps> = ({ onSubmit }) => {
           Select a Diet(Optional):
         </label>
 
-        <Select onSelect={setDietType} options={dietCategories} label={'Choose a Diet'} defaultValue={''} />
+        <SelectDropdown onSelect={setDietType} options={dietCategories} label={'Choose a Diet'} defaultValue={''} />
 
         <div className='m-5 border'></div>
 
