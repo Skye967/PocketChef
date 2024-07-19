@@ -6,36 +6,36 @@ export type Recipe = {
 };
 
 export const mealCategories = [
-  'Breakfast',
-  'Lunch',
-  'Dinner',
-  'Dessert',
-  'Salad',
-  'Sandwich',
-  'Appetizer',
-  'Soup',
-  'Flatbread',
-  'Pasta',
+  { value: 'Breakfast', label: 'Breakfast' },
+  { value: 'Lunch', label: 'Lunch' },
+  { value: 'Dinner', label: 'Dinner' },
+  { value: 'Dessert', label: 'Dessert' },
+  { value: 'Salad', label: 'Salad' },
+  { value: 'Sandwich', label: 'Sandwich' },
+  { value: 'Appetizer', label: 'Appetizer' },
+  { value: 'Soup', label: 'Soup' },
+  { value: 'Flatbread', label: 'Flatbread' },
+  { value: 'Pasta', label: 'Pasta' }
 ];
 
 export const dietCategories = [
-  'Low-carb',
-  'Low-sugar',
-  'Low-fat',
-  'Low-calorie',
-  'Vegan',
-  'Carnivore',
-  'Vegetarian',
-  'Gluten-free',
-  'keto',
-  'Paleo',
-  'Anti-inflammatory',
-  'Atkins',
+  { label: 'Low-carb', value: 'low-carb' },
+  { label: 'Low-sugar', value: 'low-sugar' },
+  { label: 'Low-fat', value: 'low-fat' },
+  { label: 'Low-calorie', value: 'low-calorie' },
+  { label: 'Vegan', value: 'vegan' },
+  { label: 'Carnivore', value: 'carnivore' },
+  { label: 'Vegetarian', value: 'vegetarian' },
+  { label: 'Gluten-free', value: 'gluten-free' },
+  { label: 'Keto', value: 'keto' },
+  { label: 'Paleo', value: 'paleo' },
+  { label: 'Anti-inflammatory', value: 'anti-inflammatory' },
+  { label: 'Atkins', value: 'atkins' },
 ];
 
 export const amountOfRecipes = [
-  '5',
-  '10',
-  '15',
-  '20'
+  { label: '5', value: '5' },
+  { label: '10', value: '10' },
+  { label: '15', value: '15' },
+  { label: '20', value: '20' },
 ];
