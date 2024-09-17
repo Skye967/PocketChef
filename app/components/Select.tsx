@@ -13,7 +13,8 @@ interface SelectProps {
 }
 
 const SelectDropdown: React.FC<SelectProps> = (SelectProps) => {
-  const [selectedOption, setSelectedOption] = useState<string>(SelectProps.defaultValue);
+  // const [selectedOption, setSelectedOption] = useState<string>(SelectProps.defaultValue);
+  // console.log(selectedOption)
 
   return (
     <FormControl variant="filled" fullWidth>
@@ -23,8 +24,7 @@ const SelectDropdown: React.FC<SelectProps> = (SelectProps) => {
         style={{ backgroundColor: "white" }}
         labelId="demo-simple-select-label"
         id="demo-simple-select"
-        value={selectedOption}
-        onChange={e => setSelectedOption(e.target.value)}
+        onChange={e => SelectProps.onSelect(e.target.value)}
       >
         {SelectProps.options.map((category, key) => (
           <MenuItem key={key} value={category.value}>{category.label}</MenuItem>

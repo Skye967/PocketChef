@@ -2,7 +2,7 @@
 
 import styles from './css/select.module.css';
 import '../chef/form.css'
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent, useEffect } from 'react';
 import { mealCategories, dietCategories, amountOfRecipes } from '../util/constants';
 import SelectDropdown from './Select';
 
@@ -23,12 +23,15 @@ const RecipeForm: React.FC<FoodInputComponentProps> = ({ onSubmit }) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    console.log(ingredients, mealType, numberOfRecipes, dietType);
     if (ingredients) {
       onSubmit(ingredients, mealType, numberOfRecipes, dietType);
     }
     setMealType('');
     setDietType('');
   };
+
+  useEffect(() => {}, [ingredients, mealType, numberOfRecipes, dietType]);
 
   return (
     <div className='form-signin mx-auto mt-8 max-w-md rounded p-4 shadow-md'>
