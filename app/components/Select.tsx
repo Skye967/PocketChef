@@ -13,8 +13,6 @@ interface SelectProps {
 }
 
 const SelectDropdown: React.FC<SelectProps> = (SelectProps) => {
-  // const [selectedOption, setSelectedOption] = useState<string>(SelectProps.defaultValue);
-  // console.log(selectedOption)
 
   return (
     <FormControl variant="filled" fullWidth>
