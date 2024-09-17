@@ -18,9 +18,6 @@
     "@mui/material": "^5.16.4",
     "@mui/material-nextjs": "^5.16.4",
     "@mui/styled-engine-sc": "^6.0.0-alpha.18",
-    "@trigger.dev/nextjs": "^2.3.19",
-    "@trigger.dev/react": "^2.3.19",
-    "@trigger.dev/sdk": "^2.3.19",
     "axios": "^1.6.7",
     "framer-motion": "^11.2.3",
     "gsap": "^3.12.5",
@@ -52,8 +49,5 @@
     "tslib": "^2.6.2",
     "tsx": "^4.7.1",
     "typescript": "^5"
-  },
-  "trigger.dev": {
-    "endpointId": "v2-test-project-hZg3"
   }
 }
