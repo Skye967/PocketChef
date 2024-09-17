@@ -2,7 +2,7 @@
 
 import styles from './css/select.module.css';
 import '../chef/form.css'
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent, useEffect } from 'react';
 import { mealCategories, dietCategories, amountOfRecipes } from '../util/constants';
 import SelectDropdown from './Select';
 
